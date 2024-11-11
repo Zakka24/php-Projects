@@ -82,9 +82,8 @@
             header("location:". SITEURL. 'admin/add-admin.php');
         }
 
-        mysqli_close($conn);
     }
 
-
-
+    // Close connection to MySQL
+    mysqli_close($conn);
 ?>
