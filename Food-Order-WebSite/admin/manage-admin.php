@@ -49,7 +49,7 @@
                                     <td><?php echo $full_name; ?></td>
                                     <td><?php echo $username; ?></td>
                                     <td>
-                                        <a href="#" class="btn-secondary">Update Admin</a>
+                                    <a href="update-admin.php?id=<?php echo $id;?>" class="btn-secondary">Update Admin</a> <!-- Passo l'id come query nell'url --->
                                         <a href="#" class="btn-danger">Delete Admin</a>
                                     </td>
                                 </tr>
