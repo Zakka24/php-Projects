@@ -7,11 +7,23 @@
             <br>
 
             <?php 
-                // Check if sessione message is there
+                // Check if session message is there
                 if(isset($_SESSION['add'])){
                     echo $_SESSION['add']; // Display session message
                     unset($_SESSION['add']); // Remove session message
                 }
+
+                if(isset($_SESSION['update'])){
+                    echo $_SESSION['update']; // Display session message
+                    unset($_SESSION['update']); // Remove session message
+                }
+
+                if(isset($_SESSION['delete'])){
+                    echo $_SESSION['delete']; // Display session message
+                    unset($_SESSION['delete']); // Remove session message
+                }
+                
+
             ?>
 
             <br> <br> <br>
@@ -49,8 +61,8 @@
                                     <td><?php echo $full_name; ?></td>
                                     <td><?php echo $username; ?></td>
                                     <td>
-                                    <a href="update-admin.php?id=<?php echo $id;?>" class="btn-secondary">Update Admin</a> <!-- Passo l'id come query nell'url --->
-                                        <a href="#" class="btn-danger">Delete Admin</a>
+                                        <a href="update-admin.php?id=<?php echo $id;?>" class="btn-secondary">Update Admin</a> <!-- Passo l'id come query nell'url --->
+                                        <a href="delete-admin.php?id=<?php echo $id;?>" class="btn-danger">Delete Admin</a> <!-- Passo l'id come query nell'url --->
                                     </td>
                                 </tr>
 
