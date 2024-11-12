@@ -4,14 +4,6 @@
         <div class="wrapper">
             <h1>Add Admin</h1>
               
-            <br>
-            <?php 
-                // Check if sessione message is there
-                if(isset($_SESSION['add'])){
-                    echo $_SESSION['add']; // Display session message
-                    unset($_SESSION['add']); // Remove session message
-                }
-            ?>
             <br> <br> <br>
 
             <form action="" method="post">
@@ -51,8 +43,7 @@
         // Get data from the form
         $full_name = $_POST["full_name"];
         $username = $_POST["username"];
-        $password = md5($_POST["password"]); // password encryption
-
+        $password_hashed = password_hash($_POST["password"], PASSWORD_BCRYPT); // password encryption
         
         // SQL query to save data into database
         $sql = "INSERT INTO tbc_admin (full_name, username, password) VALUES (?, ?, ?)";
@@ -61,24 +52,27 @@
         $stmt = mysqli_prepare($conn, $sql);
         if($stmt){
             // Binding of the parameters to avoid SQL injection
-            mysqli_stmt_bind_param($stmt, "sss", $full_name, $username, $password);
-
-            // Execution of the statement
-            if(mysqli_stmt_execute($stmt)){
-                // create a sessione variabile to display the message
-                $_SESSION['add'] = 'Admin added succesfully';
-                header("location:". SITEURL. 'admin/manage-admin.php');
+            if(mysqli_stmt_bind_param($stmt, "sss", $full_name, $username, $password_hashed)){
+                // Execution of the statement
+                if(mysqli_stmt_execute($stmt)){
+                    // create a sessione variabile to display the message
+                    $_SESSION['add'] = '<div class="success">Admin added succesfully</div>';
+                    header("location:". SITEURL. 'admin/manage-admin.php');
+                }
+                else{
+                    $_SESSION['add'] = '<div class="error">Failed to add admin</div>';
+                    header("location:". SITEURL. 'admin/add-admin.php');
+                }
             }
             else{
-                $_SESSION['add'] = 'Failed to add admin: '. mysqli_stmt_error($stmt);
-                header("location:". SITEURL. 'admin/add-admin.php');
+                echo "Errore in mysqli bind param";
             }
 
             // Close the statement
             mysqli_stmt_close($stmt);
         }
         else{
-            $_SESSION['add'] = 'Failed to add admin' . mysqli_error($conn);
+            $_SESSION['add'] = '<div class="error">Failed to add admin</div>';
             header("location:". SITEURL. 'admin/add-admin.php');
         }
 
