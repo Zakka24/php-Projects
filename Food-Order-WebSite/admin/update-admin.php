@@ -85,11 +85,11 @@
                 // Execution of the statement
                 if(mysqli_stmt_execute($stmt)){
                     // Create a session variable to display the message
-                    $_SESSION['update'] = 'Admin information updated successfully';
+                    $_SESSION['update'] = '<div class="success">Admin information updated successfully</div>';
                     header("location:". SITEURL. 'admin/manage-admin.php');
                 }
                 else{
-                    $_SESSION['update'] = 'Failed information update';
+                    $_SESSION['update'] = '<div class="error">Failed information update</div>';
                     header("location:". SITEURL. 'admin/manage-admin.php');
                 }
 
