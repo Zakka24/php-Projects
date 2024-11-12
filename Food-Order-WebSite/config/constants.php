@@ -3,7 +3,7 @@
     session_start();
 
 
-    define('SITEURL', 'http://localhost/Food-Order-WebSite/');
+    define('SITEURL', 'http://localhost/php-projects/Food-Order-WebSite/');
     
     // Costants to connect to the DB
     define('LOCALHOST', 'localhost');
