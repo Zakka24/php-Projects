@@ -30,11 +30,11 @@
                 // Execution of the statement
                 if(mysqli_stmt_execute($stmt)){
                     // Create a session variable to display the message
-                    $_SESSION['delete'] = 'Admin information deleted successfully';
+                    $_SESSION['delete'] = '<div class="success">Admin information deleted successfully</div>';
                     header("location:". SITEURL. 'admin/manage-admin.php');
                 }
                 else{
-                    $_SESSION['delete'] = 'Failed to delete the admin';
+                    $_SESSION['delete'] = '<div class="error" Failed to delete the admin</div>';
                     header("location:". SITEURL. 'admin/manage-admin.php');
                 }
 
