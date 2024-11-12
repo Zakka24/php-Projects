@@ -7,23 +7,29 @@
             <br>
 
             <?php 
-                // Check if session message is there
+                // Message for adding a new admin
                 if(isset($_SESSION['add'])){
                     echo $_SESSION['add']; // Display session message
                     unset($_SESSION['add']); // Remove session message
                 }
 
+                // Message for updating admin informations (full_name, username)
                 if(isset($_SESSION['update'])){
                     echo $_SESSION['update']; // Display session message
                     unset($_SESSION['update']); // Remove session message
                 }
 
+                // Message for deleting an admin
                 if(isset($_SESSION['delete'])){
                     echo $_SESSION['delete']; // Display session message
                     unset($_SESSION['delete']); // Remove session message
                 }
-                
 
+                // Message for updating an admin password
+                if(isset($_SESSION['update-password'])){
+                    echo $_SESSION['update-password']; // Display session message
+                    unset($_SESSION['update-password']); // Remove session message
+                }
             ?>
 
             <br> <br> <br>
@@ -61,6 +67,7 @@
                                     <td><?php echo $full_name; ?></td>
                                     <td><?php echo $username; ?></td>
                                     <td>
+                                        <a href="update-password-admin.php?id=<?php echo $id;?>" class="btn-primary">Update Password</a> <!-- Passo l'id come query nell'url --->
                                         <a href="update-admin.php?id=<?php echo $id;?>" class="btn-secondary">Update Admin</a> <!-- Passo l'id come query nell'url --->
                                         <a href="delete-admin.php?id=<?php echo $id;?>" class="btn-danger">Delete Admin</a> <!-- Passo l'id come query nell'url --->
                                     </td>
