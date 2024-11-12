@@ -70,6 +70,14 @@ table tr td{
     width: 30%;
 }
 
+.success{
+    color: #2ed573;
+}
+
+.error{
+    color: #ff4757;
+}
+
 /* Main Content style */
 .main-content{
     background-color: #f1f2f6;
