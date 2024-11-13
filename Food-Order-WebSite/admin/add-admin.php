@@ -64,10 +64,6 @@
                     header("location:". SITEURL. 'admin/add-admin.php');
                 }
             }
-            else{
-                echo "Errore in mysqli bind param";
-            }
-
             // Close the statement
             mysqli_stmt_close($stmt);
         }
@@ -75,9 +71,5 @@
             $_SESSION['add'] = '<div class="error">Failed to add admin</div>';
             header("location:". SITEURL. 'admin/add-admin.php');
         }
-
     }
-
-    // Close connection to MySQL
-    mysqli_close($conn);
 ?>

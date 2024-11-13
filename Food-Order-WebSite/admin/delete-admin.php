@@ -34,7 +34,7 @@
                     header("location:". SITEURL. 'admin/manage-admin.php');
                 }
                 else{
-                    $_SESSION['delete'] = '<div class="error" Failed to delete the admin</div>';
+                    $_SESSION['delete'] = '<div class="error">Failed to delete the admin</div>';
                     header("location:". SITEURL. 'admin/manage-admin.php');
                 }
 
@@ -43,9 +43,8 @@
             }
         }  
         else{
-            echo "no id found";
+            $_SESSION['delete'] = '<div class="error">No id found</div>';
+            header("location:". SITEURL. 'admin/manage-admin.php');
         }
     }
-    // Close MySQL connection
-    mysqli_close($conn);
 ?>

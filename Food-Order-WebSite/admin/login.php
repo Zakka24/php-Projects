@@ -66,36 +66,31 @@
             // Statement
             $stmt = mysqli_prepare($conn, $sql);
             if($stmt){
-                 // Binding the parameters to avoid SQL injection
-                 mysqli_stmt_bind_param($stmt, "s", $username);
-                 if(mysqli_stmt_execute($stmt)){
-                     // Save the result in the variables 'current_password'
-                     mysqli_stmt_bind_result($stmt, $username_db, $password_db);
-                     mysqli_stmt_fetch($stmt);
-                 }
-                 mysqli_stmt_close($stmt);
+                // Binding the parameters to avoid SQL injection
+                mysqli_stmt_bind_param($stmt, "s", $username);
+                if(mysqli_stmt_execute($stmt)){
+                    // Save the result in the variables 'current_password'
+                    mysqli_stmt_bind_result($stmt, $username_db, $password_db);
+                        mysqli_stmt_fetch($stmt);
+                    }
+                    mysqli_stmt_close($stmt);
 
-                 // Check if the user exists
-                 if(empty($username_db)){
+                    // Check if the user exists
+                    if(empty($username_db)){
                     $_SESSION["user-not-found"] = "<div class='error text-center'> Incorrect username </div>";
                     header("location:". SITEURL. 'admin/login.php'); 
-                 }
-                 else{
+                    }
                     if(password_verify($password, $password_db)){
-                        $_SESSION["user-logged"] = "<div class='success'> Successfull login </div>";
-                        $_SESSION["user"] = $username;
-                        
-                        header("location:". SITEURL. 'admin/index.php'); 
-                    }
-                    else{
-                        $_SESSION["wrong-password"] = "<div class='error text-center'> Incorrect password </div>";
-                        header("location:". SITEURL. 'admin/login.php'); 
-                    }
-                 }
+                    $_SESSION["user-logged"] = "<div class='success'> Successfull login </div>";
+                    $_SESSION["user"] = $username;
+                    
+                    header("location:". SITEURL. 'admin/index.php'); 
+                }
+                else{
+                    $_SESSION["wrong-password"] = "<div class='error text-center'> Incorrect password </div>";
+                    header("location:". SITEURL. 'admin/login.php'); 
+                }
             }
         }
     }
-
-    mysqli_close($conn);
-
 ?>
