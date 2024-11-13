@@ -101,7 +101,4 @@
             echo "no id found";
         }
     }
-
-    // Close connection to MySQL
-    mysqli_close($conn);
 ?>
