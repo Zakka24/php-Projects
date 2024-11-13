@@ -2,6 +2,9 @@
     // Start a session
     session_start();
 
+    ini_set('display_errors',1);
+    error_reporting(E_ALL);
+
 
     define('SITEURL', 'http://localhost/php-projects/Food-Order-WebSite/');
     
