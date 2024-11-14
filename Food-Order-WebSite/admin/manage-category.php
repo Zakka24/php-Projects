@@ -7,16 +7,22 @@
                 <br>
 
                 <?php 
-                    // Message for adding a new category
+                    // Message for add category
                     if(isset($_SESSION['add-category'])){
                         echo $_SESSION['add-category']; // Display session message
                         unset($_SESSION['add-category']); // Remove session message
                     }
                     
-                    // Message for delete a new category
+                    // Message for delete category
                     if(isset($_SESSION['delete-category'])){
                         echo $_SESSION['delete-category']; // Display session message
                         unset($_SESSION['delete-category']); // Remove session message
+                    }
+                    
+                    // Message for update category
+                    if(isset($_SESSION['update-category'])){
+                        echo $_SESSION['update-category']; // Display session message
+                        unset($_SESSION['update-category']); // Remove session message
                     }
                 ?>
 
