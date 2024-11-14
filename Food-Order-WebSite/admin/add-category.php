@@ -89,7 +89,7 @@
             // Check if the upload failed
             if(!$upload){
                 $_SESSION['upload-category'] = '<div class="error">Failed to upload category image</div>';
-                // header("location:".SITEURL.'admin/add-category.php');
+                header("location:".SITEURL.'admin/add-category.php');
                 die();
             }
         }
