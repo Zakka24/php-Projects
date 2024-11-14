@@ -12,6 +12,12 @@
                         echo $_SESSION['add-category']; // Display session message
                         unset($_SESSION['add-category']); // Remove session message
                     }
+                    
+                    // Message for delete a new category
+                    if(isset($_SESSION['delete-category'])){
+                        echo $_SESSION['delete-category']; // Display session message
+                        unset($_SESSION['delete-category']); // Remove session message
+                    }
                 ?>
 
                 <br> <br> <br>
@@ -25,6 +31,7 @@
                         <th>Image</th>
                         <th>Featured</th>
                         <th>Active</th>
+                        <th>Actions</th>
                     </tr>
 
                     <?php
@@ -55,7 +62,7 @@
                                         <?php 
                                             if(!empty($image_name)){
                                         ?>
-                                                <img src="<?php echo SITEURL;?>images/category/<?php echo $image_name;?>" width="100px">
+                                                <img src="<?php echo SITEURL;?>images/category/<?php echo $image_name;?>" width="100p">
                                         <?php
                                             }
                                             else{
@@ -66,8 +73,8 @@
                                     <td><?php echo $featured; ?></td>
                                     <td><?php echo $active; ?></td>
                                     <td>
-                                        <a href="#" class="btn-secondary">Update Category</a> <!-- Passo l'id come query nell'url --->
-                                        <a href="#" class="btn-danger">Delete Category</a> <!-- Passo l'id come query nell'url --->
+                                        <a href="update-category.php?id=<?php echo $id;?>" class="btn-secondary">Update Category</a> <!-- Passo l'id come query nell'url --->
+                                        <a href="delete-category.php?id=<?php echo $id;?>" class="btn-danger">Delete Category</a> <!-- Passo l'id come query nell'url --->
                                     </td>
                                 </tr>
 

@@ -80,7 +80,7 @@
         }
 
         // Check if image field is not empty
-        if(isset($_FILES['image'])){
+        if(!empty($_FILES['new_image_name']['name'])){
             $image_name = $_FILES['image']['name']; // Image name
             $source_path = $_FILES['image']['tmp_name']; // Source path of the image
             $destination_path = "../images/category/".$image_name; // Where i want to upload my image
