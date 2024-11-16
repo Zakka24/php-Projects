@@ -100,13 +100,13 @@
         if(!empty($_FILES['image']['name'])){
             $image_name = $_FILES['image']['name']; // Image name
             $source_path = $_FILES['image']['tmp_name']; // Source path of the image
-            $destination_path = "../images/category/".$image_name; // Where i want to upload my image
+            $destination_path = "../images/food/".$image_name; // Where i want to upload my image
             $upload = move_uploaded_file($source_path, $destination_path); // Move my image from source to destination
 
             // Check if the upload failed
             if(!$upload){
                 $_SESSION['upload-food'] = '<div class="error">Failed to upload category image</div>';
-                header("location:".SITEURL.'admin/add-category.php');
+                header("location:".SITEURL.'admin/add-food.php');
                 die();
             }
         }
