@@ -2,7 +2,7 @@
 
     <div class="main-content">
         <div class="wrapper">
-            <h1>Update Password</h1>
+            <h1>Update Category</h1>
               
             <br>
             <?php 
@@ -110,7 +110,7 @@
                 // Check if the upload failed
                 if(!$upload){
                     $_SESSION['upload-category'] = '<div class="error">Failed to upload category image</div>';
-                    // header("location:".SITEURL.'admin/update-category.php');
+                    header("location:".SITEURL.'admin/update-category.php');
                     die();
                 }
             }
@@ -133,11 +133,11 @@
                 if(mysqli_stmt_execute($stmt)){
                     // Create a session variable to display the message
                     $_SESSION['update-category'] = '<div class="success">Category updated successfully</div>';
-                    // header("location:". SITEURL. 'admin/manage-category.php');
+                    header("location:". SITEURL. 'admin/manage-category.php');
                 }
                 else{
                     $_SESSION['update-category'] = '<div class="error">Failed category update</div>';
-                    // header("location:". SITEURL. 'admin/update-category.php');
+                    header("location:". SITEURL. 'admin/update-category.php');
                 }
                 // Close the statement
                 mysqli_stmt_close($stmt);
